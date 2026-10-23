@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-std::string trim(std::string str)
+std::string trim(const std::string &str)
 {
     const std::string whiteSpace = " \t\n\r\f\v";
     const std::size_t strBegin = str.find_first_not_of(whiteSpace);
