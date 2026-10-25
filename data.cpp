@@ -2,6 +2,15 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <random>
+#include <algorithm>
+#include <ranges>
+
+void shuffleVector(std::vector<std::string> &vec)
+{
+    auto rng = std::default_random_engine{};
+    std::shuffle(vec.begin(), vec.end(), rng);
+}
 
 std::string trim(const std::string &str)
 {
@@ -38,7 +47,15 @@ int main()
     else
         std::cout << "Unable to open file";
 
-    for (std::string element : v)
+    for (std::string element : v | std::views::take(10))
+    {
+        std::cout << element << std::endl;
+    }
+
+    shuffleVector(v);
+    std::cout << "=================>AFTER SHUFFLING" << std::endl;
+
+    for (std::string element : v | std::views::take(10))
     {
         std::cout << element << std::endl;
     }
